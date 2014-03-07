@@ -1480,6 +1480,10 @@ local function done()
   abort = nil -- to make sure that callback calls use proper "abort" value
 end
 
+local function breaknow(title, number)
+   coroutine.resume(coro_debugger, events.BREAK, vars, title or "code_breakpoint", number or 1)
+end
+
 -- make public functions available
 mobdebug.setbreakpoint = set_breakpoint
 mobdebug.removebreakpoint = remove_breakpoint
@@ -1495,6 +1499,7 @@ mobdebug.moai = moai
 mobdebug.coro = coro
 mobdebug.done = done
 mobdebug.yield = nil -- callback
+mobdebug.breaknow = breaknow
 
 -- this is needed to make "require 'modebug'" to work when mobdebug
 -- module is loaded manually
