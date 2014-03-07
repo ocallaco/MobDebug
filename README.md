@@ -1,6 +1,23 @@
+
+
 # MobDebug
 
 MobDebug is a remote debugger for Lua.
+
+##Conall's change:
+
+added breaknow() function to allow setting breakpoints in code at the spot (rather than setting them by filename and line)
+
+Example:
+```lua
+mdb = require('mobdebug')
+mdb.start()
+
+...
+
+--your code
+mdb.breaknow("My breakpoint")
+```
 
 ## Features
 
